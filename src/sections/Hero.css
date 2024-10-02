@@ -1,0 +1,20 @@
+.scroll-container {
+  width: 100vw; /* Full width of the viewport */
+  overflow: hidden; /* Hide overflow */
+  white-space: nowrap; /* Prevent wrapping */
+  position: relative; /* Position relative for absolute child */
+}
+
+.scrolling-image {
+  height: 100px; /* Set the desired height */
+  animation: scroll 40s linear infinite; /* Animation: duration, timing function, and repeat */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%); /* Start just outside the right edge */
+  }
+  100% {
+    transform: translateX(-100%); /* Move to just outside the left edge */
+  }
+}
