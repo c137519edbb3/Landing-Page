@@ -1,10 +1,11 @@
 import './App.css';
+import Hero from './sections/Hero';
 
 function App() {
   return (
-    <h1 class="text-3xl font-bold underline text-clifford">
-        Hello world!
-      </h1>
+    <div>
+      <Hero />
+    </div>
   );
 }
 
