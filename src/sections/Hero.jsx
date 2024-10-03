@@ -3,6 +3,7 @@ import EyeconPurpleLogo from "../assets/images/eyecon_purple.png";
 import Dashboard from "../assets/images/dashboard.png";
 import Organizations from "../assets/images/organizations.png";
 import "./Hero.css";
+import SectionTitleButton from "../components/SectionTitleButton";
 
 const Hero = () => {
   return (
@@ -13,12 +14,7 @@ const Hero = () => {
           alt="Eyecon Logo"
           className="h-12 mb-6 mx-auto"
         />
-        <button
-          type="button"
-          class="text-gray-900 bg-white border border-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-8"
-        >
-          Stay Safe Today
-        </button>
+        <SectionTitleButton title="Stay Safe Today"/>
 
         <h1 className="mb-4 text-3xl font-extrabold tracking-tight leading-none text-gray-900 md:text-4xl lg:text-5xl">
           See the Story Behind Every Frame
