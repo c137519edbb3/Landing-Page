@@ -2,7 +2,7 @@ import React from "react";
 
 const BookDemo = () => {
   return (
-    <section className="bg-white">
+    <section className="bg-white mt-32 mb-64"> {/* Added margin classes here */}
       <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
         <h1 className="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl">
           Ready to scale your brand to{" "}

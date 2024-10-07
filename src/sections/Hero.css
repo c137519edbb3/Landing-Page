@@ -1,12 +1,13 @@
 .scroll-container {
-  width: 100vw; /* Full width of the viewport */
+  width: 50vw; /* Full width of the viewport */
+  
   overflow: hidden; /* Hide overflow */
   white-space: nowrap; /* Prevent wrapping */
   position: relative; /* Position relative for absolute child */
 }
 
 .scrolling-image {
-  height: 100px; /* Set the desired height */
+  /* height: 100px; Set the desired height */
   animation: scroll 40s linear infinite; /* Animation: duration, timing function, and repeat */
 }
 

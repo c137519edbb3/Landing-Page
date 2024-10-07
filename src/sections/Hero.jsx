@@ -7,14 +7,14 @@ import SectionTitleButton from "../components/SectionTitleButton";
 
 const Hero = () => {
   return (
-    <section className="bg-white ">
+    <section className="bg-white">
       <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
         <img
           src={EyeconPurpleLogo}
           alt="Eyecon Logo"
           className="h-12 mb-6 mx-auto"
         />
-        <SectionTitleButton title="Stay Safe Today"/>
+        <SectionTitleButton title="Stay Safe Today" />
 
         <h1 className="mb-4 text-3xl font-extrabold tracking-tight leading-none text-gray-900 md:text-4xl lg:text-5xl">
           See the Story Behind Every Frame
@@ -25,7 +25,7 @@ const Hero = () => {
           Vision
         </p>
 
-        <div className="mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+        <div className="mb-0 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
           <button
             type="button"
             className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
@@ -41,11 +41,11 @@ const Hero = () => {
           </button>
         </div>
 
-        <div className="flex flex-col items-center justify-center mb-16">
+        <div className="flex flex-col items-center justify-center mb-0">
           <img src={Dashboard} alt="Dashboard" className="h-100" />
         </div>
 
-        <div className="flex flex-col items-center h-screen overflow-hidden">
+        <div className="flex flex-col items-center overflow-hidden mb-0">
           <div className="scroll-container">
             <img
               src={Organizations}
