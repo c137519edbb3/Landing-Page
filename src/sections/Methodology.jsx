@@ -1,45 +1,60 @@
 import React from "react";
-import SectionTitleButton from "../components/SectionTitleButton";
+import SectionComponent from '../components/SectionComponent';
 import camera from "../assets/images/camera.png";
 import rock from "../assets/videos/output-onlinegiftools.gif";
 import table from "../assets/images/table.png";
 
 const ModelArchitecture = () => {
   return (
-    <section className="bg-white">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-        <SectionTitleButton title="Methodology" />
+       <SectionComponent 
+        text="Methodology" 
+        heading="Methodology" 
+        subheading="We pass live camera feeds through deep learning models to predict events as catastrophic, critical, or normal, with high precision and continuous adaptation."
+        >
 
-        <h1 className="mb-4 text-3xl font-extrabold tracking-tight leading-none text-gray-900 md:text-4xl lg:text-5xl">
-          Methodology
-        </h1>
 
-        <p className="mb-8 text-lg font-normal text-gray-600 lg:text-lg sm:px-16 xl:px-48">
-          We pass live camera feeds through deep learning models to predict
-          events as catastrophic, critical, or normal, with high precision and
-          continuous adaptation.
-        </p>
-
-        {/* Architecture Model Section */}
-        <div className="flex items-center justify-center">
+<div
+  className="
+    flex 
+    flex-col md:flex-row 
+    items-center justify-center 
+    gap-8 md:gap-12 
+    p-4
+  "
+>
   {/* First Image (Camera) */}
-  <img src={camera} alt="Model Step 1" className="h-60 w-auto mx-2" /> {/* Added consistent margin */}
+  <img
+    src={camera}
+    alt="Model Step 1"
+    className="h-24 md:h-32 w-auto mx-2"  // Further reduced size
+  />
 
-  {/* Right Arrow */}
-  <span className="text-6xl text-gray-600 ml-8">{"→"}</span> {/* Added margin for consistent spacing */}
+  {/* Arrow (Down for mobile, Right for desktop) */}
+  <span className="text-4xl text-gray-600 md:hidden">{"↓"}</span>
+  <span className="hidden md:inline text-6xl text-gray-600">{"→"}</span>
 
   {/* Second Image (Rock) */}
-  <img src={rock} alt="Model Step 2" className="h-60 w-auto mx-2" /> {/* Added consistent margin */}
+  <img
+    src={rock}
+    alt="Model Step 2"
+    className="h-32 md:h-48 w-auto mx-2"  // Reduced size
+  />
 
-  {/* Right Arrow */}
-  <span className="text-6xl text-gray-600 mr-24">{"→"}</span> {/* Added margin for consistent spacing */}
+  {/* Arrow (Down for mobile, Right for desktop) */}
+  <span className="text-4xl text-gray-600 md:hidden">{"↓"}</span>
+  <span className="hidden md:inline text-6xl text-gray-600">{"→"}</span>
 
   {/* Third Image (Table) */}
-  <img src={table} alt="Model Step 3" className="h-40 w-auto mx-2" /> {/* Added consistent margin */}
+  <img
+    src={table}
+    alt="Model Step 3"
+    className="h-28 md:h-36 w-auto mx-2"  // Slight adjustment for consistency
+  />
 </div>
 
-      </div>
-    </section>
+
+
+      </SectionComponent>
   );
 };
 

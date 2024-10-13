@@ -1,5 +1,5 @@
-// MainComponent.jsx
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import SectionComponent from '../components/SectionComponent';
 
 const WhoFor = () => {
@@ -10,101 +10,109 @@ const WhoFor = () => {
         heading="Who Is This For?" 
         subheading="Our solution is tailored for industries like education, security, manufacturing, and public safety where real-time anomaly detection is critical."
       >
-        <AnimatedCards /> 
+        <VerticalSlidingCards /> 
       </SectionComponent>
     </div>
   );
 };
 
-const AnimatedCards = () => {
+const items = Array.from({ length: 12 }, (_, i) => ({
+  title: `Item ${i + 1}`,
+  description: `Description for Item ${i + 1}`,
+  imageUrl: `/api/placeholder/100/100?text=${i + 1}` // Placeholder image
+}));
+
+const VerticalSlidingCards = () => {
+  const itemsPerColumn = Math.ceil(items.length / 3);
+  const itemHeight = 160; // Reduced from 220px to 160px
+  const columnHeight = itemsPerColumn * itemHeight;
+  const totalHeight = columnHeight * 3;
+
+  const [translateY1, setTranslateY1] = useState(columnHeight);
+  const [translateY2, setTranslateY2] = useState(0);
+  const [translateY3, setTranslateY3] = useState(columnHeight);
+  
+  const containerRef = useRef(null);
+  
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const speed = 1;
+
+
+
+    // my-2 = 8px
+    const animate = () => {
+      setTranslateY1(prev => {
+        const newY = prev - speed;
+        return newY <= itemHeight/4 + 8 ? columnHeight  : newY;
+      });
+      setTranslateY2(prev => {
+        const newY = prev + speed;
+        return newY >= columnHeight ? itemHeight/4 + 8: newY;
+      });
+      setTranslateY3(prev => {
+        const newY = prev - speed;
+        return newY <= itemHeight/4 + 8? columnHeight : newY;
+      });
+      requestAnimationFrame(animate);
+    };
+
+    const animationFrame = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [columnHeight]);
+
+  const createColumn = (startIndex, endIndex) => {
+    const columnItems = items.slice(startIndex, endIndex);
+    const repeatedItems = [...columnItems, ...columnItems, ...columnItems];
+    return repeatedItems.map((item, index) => (
+      <motion.div 
+        key={`${startIndex}-${index}`}
+        className="w-full h-[140px] flex-shrink-0 flex flex-col items-center justify-center bg-blue-300 text-white border my-2 p-2 rounded-lg"
+      >
+        <img src={item.imageUrl} alt={item.title} className="w-12 h-12 mb-1 rounded-full" />
+        <h3 className="text-sm font-bold mb-1">{item.title}</h3>
+        <p className="text-xs text-center">{item.description}</p>
+      </motion.div>
+    ));
+  };
+
   return (
-    <div style={containerStyle}>
-      {/* Column 1 */}
-      <div style={{ ...columnStyle, animation: 'slideUp 10s infinite 0s' }}>
-        <div style={cardStyle}>Card 1</div>
-        <div style={cardStyle}>Card 2</div>
-        <div style={cardStyle}>Card 3</div>
-      </div>
-      {/* Column 2 */}
-      <div style={{ ...columnStyle, animation: 'slideUp 10s infinite 2s' }}>
-        <div style={cardStyle}>Card 4</div>
-        <div style={cardStyle}>Card 5</div>
-        <div style={cardStyle}>Card 6</div>
-      </div>
-      {/* Column 3 */}
-      <div style={{ ...columnStyle, animation: 'slideUp 10s infinite 4s' }}>
-        <div style={cardStyle}>Card 7</div>
-        <div style={cardStyle}>Card 8</div>
-        <div style={cardStyle}>Card 9</div>
+    <div className="flex justify-center items-center bg-transparent p-4">
+      <div
+        className="relative w-[720px] h-[480px] overflow-hidden bg-transparent rounded-lg"
+        style={{
+          boxShadow: 'inset 0 10px 10px -10px rgba(255,255,255,1), inset 0 -10px 10px -10px rgba(255,255,255,1)'
+        }}
+      >
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white to-transparent pointer-events-none z-10" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none z-10" />
+
+        <div ref={containerRef} className="absolute top-0 left-0 right-0 flex">
+          <div 
+            className="w-1/3 px-2" 
+            style={{ transform: `translateY(${-translateY1}px)` }}
+          >
+            {createColumn(0, itemsPerColumn)}
+          </div>
+          <div 
+            className="w-1/3 px-2" 
+            style={{ transform: `translateY(${-translateY2}px)` }}
+          >
+            {createColumn(itemsPerColumn, 2 * itemsPerColumn)}
+          </div>
+          <div 
+            className="w-1/3 px-2" 
+            style={{ transform: `translateY(${-translateY3}px)` }}
+          >
+            {createColumn(2 * itemsPerColumn, 3 * itemsPerColumn)}
+          </div>
+        </div>
       </div>
     </div>
   );
 };
-
-const containerStyle = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  width: '50%',
-  height: '400px', // Height of the widget
-  overflow: 'hidden',
-};
-
-const columnStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  width: '33%', // Adjust width of each column
-};
-
-// Base card style with animation
-const cardStyle = {
-  width: '100%', // Width of the cards
-  height: '200px',
-  border: '2px solid #ccc',
-  borderRadius: '10px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  margin: '10px 0',
-  backgroundColor: '#B6B6B64E',
-  animation: 'rollBack 10s infinite', // Add roll back animation
-};
-
-// CSS for the slide up animation
-// const animationStyle = `
-//   @keyframes slideUp {
-//     0% {
-//       transform: translateY(100%); // Start below
-//     }
-//     20% {
-//       transform: translateY(0); // Move to original position
-//     }
-//     80% {
-//       transform: translateY(0); // Stay at the original position
-//     }
-//     100% {
-//       transform: translateY(-100%); // Move above
-//     }
-//   }
-
-//   @keyframes rollBack {
-//     0% {
-//       transform: translateY(0); // Start at original position
-//     }
-//     20% {
-//       transform: translateY(0); // Roll back effect
-//     }
-//     80% {
-//       transform: translateY(0); // Stay at original position
-//     }
-//     100% {
-//       transform: translateY(0); // End at original position
-//     }
-//   }
-// `;
-
-// // Inject the animation CSS into the document
-// const styleSheet = document.styleSheets[0];
-// styleSheet.insertRule(animationStyle, styleSheet.cssRules.length);
 
 export default WhoFor;
