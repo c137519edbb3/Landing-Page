@@ -7,7 +7,7 @@ const PurpleLogo = () => {
     <img
           src={EyeconPurpleLogo}
           alt="Eyecon Logo"
-          className="h-12 mt-12 mx-auto"
+          className="h-12 mt-32 mx-auto"
         />
   );
 };

@@ -1,21 +1,48 @@
 .scroll-container {
-  width: 50vw; /* Full width of the viewport */
-  
-  overflow: hidden; /* Hide overflow */
-  white-space: nowrap; /* Prevent wrapping */
-  position: relative; /* Position relative for absolute child */
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.scrolling-images {
+  display: flex;
+  animation: scroll 10s linear infinite;
 }
 
 .scrolling-image {
-  /* height: 100px; Set the desired height */
-  animation: scroll 40s linear infinite; /* Animation: duration, timing function, and repeat */
+  width: auto;
+  height: 50px;
+  margin: 0 10px;
+  filter: grayscale(100%) brightness(0);
+  transition: filter 0.3s ease, box-shadow 0.3s ease;
 }
 
 @keyframes scroll {
   0% {
-    transform: translateX(100%); /* Start just outside the right edge */
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%); /* Move to just outside the left edge */
+    transform: translateX(-50%);
   }
+}
+
+/* Gradient overlays for smooth fading effect */
+.scroll-container::before,
+.scroll-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+}
+
+.scroll-container::before {
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+}
+
+.scroll-container::after {
+  right: 0;
+  background: linear-gradient(to left, white, transparent);
 }

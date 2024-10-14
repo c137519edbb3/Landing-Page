@@ -1,128 +1,128 @@
 import React from 'react';
+import syslab from "../assets/images/logosyslab.svg";
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer-section">
-        <h4>Product</h4>
-        <ul>
-          <li>Homepage</li>
-          <li>Features</li>
-          <li>Pricing</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Download</li>
-        </ul>
-      </div>
-      <div className="footer-section">
-        <h4>Resources</h4>
-        <ul>
-          <li>Blog</li>
-          <li>Testimonial</li>
-          <li>Team</li>
-          <li>FAQ</li>
-          <li>Detail Blog</li>
-          <li>Detail Team</li>
-        </ul>
-      </div>
-      <div className="footer-section">
-        <h4>Pages</h4>
-        <ul>
-          <li>Home</li>
-          <li>Get Started</li>
-          <li>Case Studies</li>
-        </ul>
-      </div>
-      <div className="footer-section">
-        <h4>Contact</h4>
-        <ul>
-          <li>info@exampleagency.com</li>
-          <li>+1 (555) 123-4567</li>
-          <li>123 Startup Avenue, Cityville, State, ZIP</li>
-        </ul>
-      </div>
-      <div className="footer-bottom">
-        <p>© Syslab.ai 2024 all rights reserved</p>
-        <div className="social-icons">
-          <a href="#">YouTube</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">Twitter</a>
+      <div className="footer-content">
+        <div className="footer-section">
+          <h4>About us</h4>
+          <ul>
+            <li>Homepage</li>
+            <li>About</li>
+            <li>Products</li>
+            <li>Awards & Partners</li>
+            <li>Contact Us</li>
+          </ul>
+        </div>       
+        <div className="footer-section">
+          <h4>Contact Us</h4>
+          <ul>
+            <li>info@syslab.ai</li>
+            <li>Room 1, Academic Block 3 FAST- National University of Computer Emerging Sciences ST-4, Sector 17-D, Shah Latif Town On National Highway Karachi</li>
+          </ul>
         </div>
+        <div className="footer-section">
+          <h4>Parent Company</h4>
+          <ul>
+            <li>
+              <img src={syslab} alt="Syslab.AI" className="footer-image" />
+            </li>           
+            <li>SYSLAB.AI (Private) Limited focuses on providing and developing innovative Artificially Intelligent (AI) solutions</li>
+          </ul>
+        </div>
+      </div>      
+      <div className="footer-bottom">
+        <ul>
+          <li>
+
+        Eyecon AI All right reserved. ©2024
+          </li>
+        </ul>
       </div>
       
       {/* Inline CSS */}
       <style jsx>{`
-        /* General Styles */
-        body {
-          margin: 0;
-          font-family: Arial, sans-serif;
-        }
-
         /* Footer Styles */
         .footer {
-          background-color: #f9f9f9; /* Light background color */
-          padding: 40px 20px; /* Padding around the footer */
-          display: flex; /* Use flexbox for layout */
-          justify-content: space-between; /* Space between sections */
-          border-top: 1px solid #eaeaea; /* Top border */
-          font-size: 14px; /* Base font size */
-          color: #333; /* Text color */
+          background-color: #F9F9F9FF;
+          padding: 40px 0;
+          color: #333;
+          width: 100%;
+          font-size: 14px;
+          border-top: 1px solid #eaeaea;
+        }
+        .footer-image {
+          width: 100px; /* Adjust the width as needed */
+          height: auto; /* Maintain aspect ratio */
+          margin-top: 10px; /* Add spacing */
+        }
+        .footer-content {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
         }
 
         /* Footer Sections */
         .footer-section {
-          flex: 1; /* Each section takes equal width */
-          margin-right: 20px; /* Margin between sections */
+          flex: 1 1 200px;
+          margin-bottom: 20px;
+          margin-right: 20px;
         }
 
         .footer-section:last-child {
-          margin-right: 0; /* Remove margin from the last section */
+          margin-right: 0;
         }
 
         .footer-section h4 {
-          font-weight: bold; /* Bold headings */
-          margin-bottom: 15px; /* Space below headings */
-          font-size: 16px; /* Larger font size for headings */
+          font-weight: bold;
+          margin-bottom: 15px;
+          font-size: 16px;
         }
 
         .footer-section ul {
-          list-style: none; /* Remove bullet points */
-          padding: 0; /* Remove padding */
+          list-style: none;
+          padding: 0;
         }
 
         .footer-section li {
-          margin-bottom: 10px; /* Space between list items */
+          margin-bottom: 10px;
         }
 
         /* Footer Bottom */
         .footer-bottom {
-          text-align: center; /* Center the bottom text */
-          margin-top: 20px; /* Space above the bottom text */
-          font-size: 12px; /* Smaller font size */
+          text-align: center;
+          margin-top: 20px;
+          padding-top: 20px;
+          font-size: 12px;
         }
 
         /* Social Icons */
         .social-icons {
-          margin-top: 10px; /* Space above social icons */
+          margin-top: 10px;
         }
 
         .social-icons a {
-          margin: 0 10px; /* Space between icons */
-          text-decoration: none; /* Remove underline */
-          color: #555; /* Icon color */
-          font-weight: bold; /* Make icon text bold */
+          margin: 0 10px;
+          text-decoration: none;
+          color: #555;
+          font-weight: bold;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-          .footer {
-            flex-direction: column; /* Stack sections on smaller screens */
-            align-items: center; /* Center items */
+          .footer-content {
+            flex-direction: column;
+            align-items: center;
           }
 
           .footer-section {
-            margin-right: 0; /* Remove right margin */
-            margin-bottom: 20px; /* Space between sections when stacked */
+            width: 100%;
+            text-align: center;
+            margin-right: 0;
           }
         }
       `}</style>
