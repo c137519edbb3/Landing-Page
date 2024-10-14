@@ -2,16 +2,23 @@ import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import SectionComponent from '../components/SectionComponent';
 
+import jawwad from "../assets/images/JawwadShamsi.png";
+import burhan from "../assets/images/BurhanKhan.jpg";
+import women from "../assets/images/women.png";
+import aiman from "../assets/images/aiman.jpeg";
+import yahya from "../assets/images/yahya.jpg";
+import yousuf from "../assets/images/yousuf.png";
+import sufiyan from "../assets/images/sufiyan.png";
+import umer from "../assets/images/Umer.png";
+
 const Team = () => {
   return (
     <div>
-      {/* Pass props to SectionComponent */}
       <SectionComponent 
         text="Team" 
         heading="Meet the incredible team" 
         subheading="We pride ourselves of being the best of the best and our team encapsulates that."
       >
-        {/* Custom content passed as 'children' */}
         <HorizontalSlidingCards />
       </SectionComponent>
     </div>
@@ -20,12 +27,69 @@ const Team = () => {
 
 
 export default Team;
+const items = [
+  { 
+    title: "Dr. Jawwad Shamsi", 
+    description: "faculty", 
+    imageUrl: jawwad
+  },
+  { 
+    title: "Dr. Burhan Khan", 
+    description: "faculty", 
+    imageUrl: burhan
+  },
+  // { 
+  //   title: "Dr. Narmeen Bawany", 
+  //   description: "faculty", 
+  //   imageUrl: women
+  // },
+  // { 
+  //   title: "Alina Arshad", 
+  //   description: "Developer", 
+  //   imageUrl: women
+  // },
+  // { 
+  //   title: "Filza Akhlaq", 
+  //   description: "Developer", 
+  //   imageUrl: women
+  // },
+  // { 
+  //   title: "Syeda Ravia Ejaz", 
+  //   description: "Developer", 
+  //   imageUrl: women
+  // },
+  // { 
+  //   title: "Ayesha Zia", 
+  //   description: "Developer", 
+  //   imageUrl: women
+  // },
+  { 
+    title: "Aiman Imran", 
+    description: "Developer", 
+    imageUrl: aiman
+  },
+  { 
+    title: "Muhammad Yahya", 
+    description: "Developer", 
+    imageUrl: yahya
+  },
+  { 
+    title: "Yousuf Ahmed", 
+    description: "Developer", 
+    imageUrl: yousuf
+  },
+  { 
+    title: "Sufiyaan Usmani", 
+    description: "Developer", 
+    imageUrl: sufiyan
+  },
+  { 
+    title: "Umer Tariq", 
+    description: "Developer", 
+    imageUrl: umer
+  }
+];
 
-const items = Array.from({ length: 10 }, (_, i) => ({
-  title: `Item ${i + 1}`,
-  description: `Description for Item ${i + 1}`,
-  imageUrl: `/api/placeholder/100/100?text=${i + 1}` // Placeholder image
-}));
 
 const HorizontalSlidingCards = () => {
   const [translateX, setTranslateX] = useState(0);
@@ -35,13 +99,13 @@ const HorizontalSlidingCards = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    const totalWidth = items.length * 200; // 200px per item
+    const totalWidth = items.length * 200;
 
     const animate = () => {
       setTranslateX(prev => {
-        const newX = prev - 0.5; // Slower movement
+        const newX = prev - 0.5;
         if (newX <= -totalWidth) {
-          return 0; // Reset to start
+          return 0;
         }
         return newX;
       });
@@ -58,7 +122,7 @@ const HorizontalSlidingCards = () => {
       <div
         className="relative w-[800px] h-[200px] overflow-hidden bg-transparent rounded-lg"
         style={{
-          boxShadow: 'inset 10px 0 10px -10px rgba(255,255,255,1), inset -10px 0 10px -10px rgba(255,255,255,1)'
+          // boxShadow: 'inset 10px 0 10px -10px rgba(255,255,255,1), inset -10px 0 10px -10px rgba(255,255,255,1)'
         }}
       >
         {/* Left shadow overlay */}
@@ -75,11 +139,26 @@ const HorizontalSlidingCards = () => {
           {[...items, ...items].map((item, index) => (
             <motion.div 
               key={index} 
-              className="w-[200px] h-full flex-shrink-0 flex flex-col items-center justify-center bg-blue-300 text-white border  mx-1 p-2 rounded-lg"
+              className="w-[200px] h-full flex-shrink-0 flex flex-col items-center justify-center  border  mx-1 p-2 rounded-lg"
+              style={{
+                backgroundImage: `url(${item.imageUrl})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'top',
+                filter: 'brightness(1.3) contrast(1)', // Increase brightness by 30%
+                border: '1px solid gray' // 1px gray border
+              }}
             >
-              <img src={item.imageUrl} alt={item.title} className="w-16 h-16 mb-2 rounded-full" />
-              <h3 className="text-lg font-bold mb-1">{item.title}</h3>
-              <p className="text-xs text-center">{item.description}</p>
+              {/* Inner shadow overlay */}
+              <div 
+                className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/90 rounded-lg" 
+                
+              />
+
+              {/* Content container */}
+              <div className="absolute inset-0 flex flex-col justify-end items-center p-2">
+                <h3 className="text-m  text-center text-gray-200">{item.title}</h3>
+                <p className="text-xs text-center text-gray-200">{item.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>

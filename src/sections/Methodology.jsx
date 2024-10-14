@@ -3,6 +3,7 @@ import SectionComponent from '../components/SectionComponent';
 import camera from "../assets/images/camera.png";
 import rock from "../assets/videos/output-onlinegiftools.gif";
 import table from "../assets/images/table.png";
+import cloud from "../assets/images/cloud_footer.svg";
 
 const ModelArchitecture = () => {
   return (
@@ -26,7 +27,7 @@ const ModelArchitecture = () => {
   <img
     src={camera}
     alt="Model Step 1"
-    className="h-24 md:h-32 w-auto mx-2"  // Further reduced size
+    className="h-28 md:h-48 w-auto mx-2"  // Further reduced size
   />
 
   {/* Arrow (Down for mobile, Right for desktop) */}
@@ -34,11 +35,21 @@ const ModelArchitecture = () => {
   <span className="hidden md:inline text-6xl text-gray-600">{"→"}</span>
 
   {/* Second Image (Rock) */}
-  <img
-    src={rock}
-    alt="Model Step 2"
-    className="h-32 md:h-48 w-auto mx-2"  // Reduced size
-  />
+  <div className="relative inline-block mx-2"> {/* Container for relative positioning */}
+    {/* Main Image */}
+    <img
+      src={rock}
+      alt="Model Step 2"
+      className="h-28 md:h-48 w-auto"  // Adjust size as needed
+    />
+
+    {/* Bottom-left Overlay Image */}
+    <img
+      src={cloud}
+      alt="Overlay"
+      className="absolute bottom-0 left-0 h-8 w-8 md:h-12 md:w-12"  // Adjust size of overlay image
+    />
+  </div>
 
   {/* Arrow (Down for mobile, Right for desktop) */}
   <span className="text-4xl text-gray-600 md:hidden">{"↓"}</span>
@@ -48,7 +59,7 @@ const ModelArchitecture = () => {
   <img
     src={table}
     alt="Model Step 3"
-    className="h-28 md:h-36 w-auto mx-2"  // Slight adjustment for consistency
+    className="h-16 md:h-36 w-auto mx-2"  // Slight adjustment for consistency
   />
 </div>
 

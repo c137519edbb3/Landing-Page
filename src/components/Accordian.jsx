@@ -4,6 +4,10 @@ import "./Accordian.css"; // Import your custom styles
 // FAQ data
 const faqData = [
   {
+    question: "Can I change my order?",
+    answer: "Yes, you can modify your order before it is shipped.",
+  },
+  {
     question: "What is your return policy?",
     answer: "Our return policy is 30 days.",
   },
@@ -22,6 +26,10 @@ const faqData = [
   {
     question: "Can I change my order?",
     answer: "Yes, you can modify your order before it is shipped.",
+  },
+  {
+    question: "What is your return policy?",
+    answer: "Our return policy is 30 days.",
   },
 ];
 
@@ -71,25 +79,27 @@ const Accordion = () => {
   };
 
   return (
-    <div className="max-w-4xl lg:w-3/4 mx-auto px-1 py-1">
+    <div className="max-w-full lg:w-full mx-auto px-1">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {faqData.map((faq, index) => (
           <div
             key={index}
-            className={`faq-item bg-gray-100 rounded-lg ${
-              expandedIndex === index ? "border-gray-400" : "border-gray-300"
+            className={`faq-item bg-gray-100 rounded-lg pt-16 border border-black border-opacity-10${
+              expandedIndex === index ? "border-black border-opacity-10" : "border-black border-opacity-10"
             }`}
           >
             <button
               onClick={() => toggleFAQ(index)}
               className="w-full flex justify-between items-center text-left focus:outline-none"
             >
-              <span className="text-lg font-medium text-gray-800">{faq.question}</span>
+              <span className="text-lg font-medium text-gray-800">
+                {faq.question}
+              </span>
               {expandedIndex === index ? <MinusIcon /> : <PlusIcon />}
             </button>
-
+  
             <div
-              className={`mt-2 transition-all duration-300 ease-in-out overflow-hidden ${
+              className={`transition-all duration-300 ease-in-out overflow-hidden ${
                 expandedIndex === index ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
               }`}
             >
@@ -100,6 +110,7 @@ const Accordion = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Accordion;

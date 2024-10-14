@@ -18,7 +18,7 @@ const SectionComponent = ({ text, heading, subheading, children }) => {
         <p style={{ fontSize: '50px' }}>{heading}</p>
       </div>
 
-      <div style={{ marginBottom: '80px', maxWidth: '600px', textAlign: 'center' }}>
+      <div style={{ marginBottom: '40px', maxWidth: '600px', textAlign: 'center' }}>
         <h3 style={{ margin: '0', wordWrap: 'break-word' }}>{subheading}</h3> {/* Props used here */}
       </div>
 

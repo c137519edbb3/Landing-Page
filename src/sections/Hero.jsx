@@ -24,7 +24,7 @@ const Hero = () => {
     <div>
         <SectionComponent 
           text="Stay Safe Today" 
-          heading="See the Story Behind Every Frame" 
+          heading="Context Changes Everything" 
           subheading="Context-based Detection of Mixed-Criticality Events using Computer Vision."
         >
 
@@ -75,7 +75,7 @@ const Hero = () => {
                   alt="hero"
                   // height={720}
                   // width={1400}
-                  className="mt-32" 
+                  className="mt-32 mb-20" 
                   draggable={false}
                 />
               </ContainerScroll>

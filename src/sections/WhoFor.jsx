@@ -2,6 +2,19 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import SectionComponent from '../components/SectionComponent';
 
+import petrol_pump from "../assets/images/petrol_pump.jpeg";
+import public_space from "../assets/images/public_space.jpeg";
+import retail_stores from "../assets/images/retail_stores.jpeg";
+import school from "../assets/images/school.jpeg";
+import shopping_mall from "../assets/images/shopping_mall.jpeg";
+import warehouse from "../assets/images/warehouse.jpeg";
+import wildlife from "../assets/images/wildlife.jpeg";
+import office from "../assets/images/office.jpeg";
+import factory from "../assets/images/factory.jpeg";
+import fire_hazard from "../assets/images/fire_hazard.jpeg";
+import airport from "../assets/images/airport.jpeg";
+import bank from "../assets/images/bank.jpeg";
+
 const WhoFor = () => {
   return (
     <div>
@@ -15,12 +28,70 @@ const WhoFor = () => {
     </div>
   );
 };
+const items = [
+  {
+    title: "Petrol Pump",
+    description: "Enhance safety at fuel stations.",
+    imageUrl: petrol_pump
+  },
+  {
+    title: "Public Space",
+    description: "Improve security in public areas.",
+    imageUrl: public_space
+  },
+  {
+    title: "Retail Stores",
+    description: "Prevent theft and analyze behavior.",
+    imageUrl: retail_stores
+  },
+  {
+    title: "Schools",
+    description: "Ensure student safety and attendance.",
+    imageUrl: school
+  },
+  {
+    title: "Malls",
+    description: "Optimize visitor flow and security.",
+    imageUrl: shopping_mall
+  },
+  {
+    title: "Warehouses",
+    description: "Monitor inventory and logistics.",
+    imageUrl: warehouse
+  },
+  {
+    title: "Offices",
+    description: "Secure premises against threats.",
+    imageUrl: office
+  },
+  {
+    title: "Factory",
+    description: "Ensure safety and optimize production.",
+    imageUrl: factory
+  },
+  {
+    title: "Fire Hazard",
+    description: "Early fire risk detection.",
+    imageUrl: fire_hazard
+  },
+  {
+    title: "Airport",
+    description: "Enhance security screening.",
+    imageUrl: airport
+  },
+  {
+    title: "Banks",
+    description: "Strengthen security measures.",
+    imageUrl: bank
+  },
+  {
+    title: "Wildlife",
+    description: "Protect wildlife in their habitats.",
+    imageUrl: wildlife
+  }
+];
 
-const items = Array.from({ length: 12 }, (_, i) => ({
-  title: `Item ${i + 1}`,
-  description: `Description for Item ${i + 1}`,
-  imageUrl: `/api/placeholder/100/100?text=${i + 1}` // Placeholder image
-}));
+
 
 const VerticalSlidingCards = () => {
   const itemsPerColumn = Math.ceil(items.length / 3);
@@ -38,7 +109,7 @@ const VerticalSlidingCards = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    const speed = 1;
+    const speed = 0.5;
 
 
 
@@ -67,15 +138,31 @@ const VerticalSlidingCards = () => {
   const createColumn = (startIndex, endIndex) => {
     const columnItems = items.slice(startIndex, endIndex);
     const repeatedItems = [...columnItems, ...columnItems, ...columnItems];
+    
     return repeatedItems.map((item, index) => (
       <motion.div 
         key={`${startIndex}-${index}`}
-        className="w-full h-[140px] flex-shrink-0 flex flex-col items-center justify-center bg-blue-300 text-white border my-2 p-2 rounded-lg"
+        className="w-full h-[140px] flex-shrink-0 relative overflow-hidden my-2 rounded-lg"
+        style={{
+          backgroundImage: `url(${item.imageUrl})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'brightness(1.3) contrast(0.9)', // Increase brightness by 30%
+          border: '1px solid gray' // 1px gray border
+        }}
       >
-        <img src={item.imageUrl} alt={item.title} className="w-12 h-12 mb-1 rounded-full" />
-        <h3 className="text-sm font-bold mb-1">{item.title}</h3>
-        <p className="text-xs text-center">{item.description}</p>
+        {/* Inner shadow overlay */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/90" 
+        />
+
+        {/* Content container */}
+        <div className="absolute inset-0 flex flex-col justify-end items-center p-2 text-white">
+          <h3 className="text-m mb-1 text-center text-white">{item.title}</h3>
+          <p className="text-xs text-center text-white">{item.description}</p>
+        </div>
       </motion.div>
+
     ));
   };
 
@@ -87,8 +174,8 @@ const VerticalSlidingCards = () => {
           boxShadow: 'inset 0 10px 10px -10px rgba(255,255,255,1), inset 0 -10px 10px -10px rgba(255,255,255,1)'
         }}
       >
-        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white to-transparent pointer-events-none z-10" />
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none z-10" />
+        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-white to-transparent pointer-events-none z-10" />
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent pointer-events-none z-10" />
 
         <div ref={containerRef} className="absolute top-0 left-0 right-0 flex">
           <div 

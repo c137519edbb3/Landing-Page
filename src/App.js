@@ -10,7 +10,8 @@ import Team from './sections/Team';
 import Footer from './sections/Footer';
 import grid from './assets/images/grid.svg';
 import shadows from './assets/images/shadows_bg.png';
-import fluidBg from './assets/images/fluid_bg_1.avif'; // Import the fluid background image
+import fluidBg from './assets/images/fluid_bg_1.avif';
+import bgImg from './assets/images/bg_img.png'; // Import your background image
 
 function App() {
   const wrapperStyle = {
@@ -22,7 +23,7 @@ function App() {
     justifyContent: 'center',
   };
 
-  // New fluid background style
+  // Fluid background style
   const fluidBgStyle = {
     position: 'absolute',
     top: 300,
@@ -31,10 +32,9 @@ function App() {
     bottom: 0,
     backgroundImage: `url(${fluidBg})`,
     backgroundRepeat: 'no-repeat',
-    
     backgroundSize: '100% auto',
-    opacity: 0.8, // Adjust opacity if necessary
-    zIndex: 2, // Set a lower zIndex so it's behind everything else
+    opacity: 0.8,
+    zIndex: 2,
     pointerEvents: 'none',
     filter: 'hue-rotate(80deg)',
   };
@@ -77,6 +77,20 @@ function App() {
     alignItems: 'center',
   };
 
+  // Background image style for ChooseUs section
+  const bgImgStyle = {
+    position: 'absolute', // Change to absolute
+    top: 'calc(300vh - 3136px)', // Position it accordingly
+    left: 0,
+    right: 0,
+    height: '3136px', // Set the height you want
+    backgroundImage: `url(${bgImg})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    filter: 'brightness(1.3) contrast(0.9) opacity(0.5)',
+    zIndex: -10, // Ensure it stays behind content
+  };
+
   return (
     <div style={wrapperStyle}>
       <div style={fluidBgStyle} /> {/* Fluid background */}
@@ -86,6 +100,7 @@ function App() {
         <PurpleLogo />
         <Hero />
         <ChooseUs />
+        <div style={bgImgStyle} /> {/* Background image after ChooseUs */}
         <Methodology />
         <WhoFor />
         <Team />
