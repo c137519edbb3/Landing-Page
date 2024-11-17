@@ -80,14 +80,14 @@ function App() {
   // Background image style for ChooseUs section
   const bgImgStyle = {
     position: 'absolute', // Change to absolute
-    top: 'calc(300vh - 3136px)', // Position it accordingly
+    top: 'calc(200vh - 3136px)', // Position it accordingly
     left: 0,
     right: 0,
     height: '3136px', // Set the height you want
     backgroundImage: `url(${bgImg})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    filter: 'brightness(1.3) contrast(0.9) opacity(0.5)',
+    filter: 'brightness(1.3) contrast(0.9) opacity(0.5) saturate(0.5)',
     zIndex: -10, // Ensure it stays behind content
   };
 
@@ -100,10 +100,10 @@ function App() {
         <PurpleLogo />
         <Hero />
         <ChooseUs />
-        <div style={bgImgStyle} /> {/* Background image after ChooseUs */}
-        <Methodology />
+        {/* <div style={bgImgStyle} /> */}
+        {/* <Methodology /> */}
         <WhoFor />
-        <Team />
+        {/* <Team /> */}
         <FAQ />
         <BookDemo />
         <Footer />

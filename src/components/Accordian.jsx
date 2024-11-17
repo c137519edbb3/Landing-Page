@@ -4,32 +4,32 @@ import "./Accordian.css"; // Import your custom styles
 // FAQ data
 const faqData = [
   {
-    question: "Can I change my order?",
-    answer: "Yes, you can modify your order before it is shipped.",
+    question: "What alerts can I receive?",
+    answer: "Notifications are available via SMS, email, push notifications, and webhooks.",
   },
   {
-    question: "What is your return policy?",
-    answer: "Our return policy is 30 days.",
+    question: "Is there support for integrations?",
+    answer: "Yes, we offer integration with tools like CCTV, live cameras, IoT sensors.",
   },
   {
-    question: "How long does shipping take?",
-    answer: "Shipping takes 5-7 business days.",
+    question: "How are anomalies grouped?",
+    answer: "Detected anomalies are automatically categorized by type for better analysis.",
   },
   {
-    question: "Do you offer technical support?",
-    answer: "Yes, 24/7 technical support is available.",
+    question: "What happens if an anomaly is detected?",
+    answer: "Workflow triggers can automate responses and corrective actions.",
   },
   {
-    question: "What payment methods do you accept?",
-    answer: "We accept all major credit cards and PayPal.",
+    question: "Can I train the AI with my own data?",
+    answer: "Yes, the platform allows custom AI training with proprietary datasets.",
   },
   {
-    question: "Can I change my order?",
-    answer: "Yes, you can modify your order before it is shipped.",
+    question: "What languages are supported?",
+    answer: "The platform includes multi-language interfaces for global accessibility.",
   },
   {
-    question: "What is your return policy?",
-    answer: "Our return policy is 30 days.",
+    question: "What security features are included?",
+    answer: "Multi-factor authentication and data encryption ensure enhanced security.",
   },
 ];
 
